@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 import TopNav from "@/components/TopNav";
 import LeftNav from "@/components/LeftNav";
@@ -19,6 +20,14 @@ export default function RootLayout({
         <TopNav />
         <LeftNav />
         <main className="ml-56 mt-16 p-8">{children}</main>
+
+        {/* ShipFeat Widget */}
+        <Script
+          src="https://dev.shipfeat.ai/widget.js"
+          data-key="cmmsef17j0002ayndi877da63"
+          data-api="https://dev.shipfeat.ai"
+          strategy="lazyOnload"
+        />
       </body>
     </html>
   );
