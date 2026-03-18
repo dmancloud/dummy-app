@@ -162,24 +162,24 @@ const upcomingSchedule = [
 function severityConfig(severity: string) {
   switch (severity) {
     case 'critical':
-      return { color: 'text-red-400', bg: 'bg-red-500', Icon: AlertTriangle };
+      return { color: 'text-red-600', bg: 'bg-red-100', Icon: AlertTriangle };
     case 'warning':
-      return { color: 'text-yellow-400', bg: 'bg-yellow-500', Icon: AlertTriangle };
+      return { color: 'text-yellow-600', bg: 'bg-yellow-100', Icon: AlertTriangle };
     default:
-      return { color: 'text-blue-400', bg: 'bg-blue-500', Icon: Info };
+      return { color: 'text-blue-600', bg: 'bg-blue-100', Icon: Info };
   }
 }
 
 function statusColor(status: string) {
   switch (status) {
     case 'Active':
-      return 'text-green-400 bg-green-400/10';
+      return 'text-green-700 bg-green-100';
     case 'Warning':
-      return 'text-yellow-400 bg-yellow-400/10';
+      return 'text-yellow-700 bg-yellow-100';
     case 'Critical':
-      return 'text-red-400 bg-red-400/10';
+      return 'text-red-700 bg-red-100';
     default:
-      return 'text-gray-400 bg-gray-400/10';
+      return 'text-gray-600 bg-gray-100';
   }
 }
 
@@ -206,11 +206,11 @@ export default function DashboardPage() {
   );
 
   return (
-    <div className="min-h-screen bg-gray-950 text-white p-6 space-y-8">
+    <div className="min-h-screen bg-gray-50 text-gray-900 p-6 space-y-8">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-bold text-white">Mission Control Dashboard</h1>
-        <p className="text-gray-400 text-sm mt-1">Real-time overview of all active missions and systems</p>
+        <h1 className="text-2xl font-bold text-gray-900">Mission Control Dashboard</h1>
+        <p className="text-gray-500 text-sm mt-1">Real-time overview of all active missions and systems</p>
       </div>
 
       {/* Stats Cards */}
@@ -218,13 +218,13 @@ export default function DashboardPage() {
         {stats.map((stat) => {
           const Icon = stat.icon;
           return (
-            <div key={stat.label} className="bg-gray-900 border border-gray-800 rounded-xl p-4">
+            <div key={stat.label} className="bg-white border border-gray-200 rounded-xl p-4">
               <div className="flex items-center justify-between mb-3">
-                <span className="text-gray-400 text-sm">{stat.label}</span>
-                <Icon className="w-5 h-5 text-gray-500" />
+                <span className="text-gray-500 text-sm">{stat.label}</span>
+                <Icon className="w-5 h-5 text-gray-400" />
               </div>
-              <div className="text-2xl font-bold text-white">{stat.value}</div>
-              <div className={`text-xs mt-1 ${stat.up ? 'text-green-400' : 'text-red-400'}`}>
+              <div className="text-2xl font-bold text-gray-900">{stat.value}</div>
+              <div className={`text-xs mt-1 ${stat.up ? 'text-green-600' : 'text-red-600'}`}>
                 {stat.change}
               </div>
             </div>
@@ -235,24 +235,24 @@ export default function DashboardPage() {
       {/* Missions Table + Telemetry */}
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
         {/* Missions Table */}
-        <div className="xl:col-span-2 bg-gray-900 border border-gray-800 rounded-xl">
-          <div className="p-4 border-b border-gray-800 flex items-center justify-between gap-4">
-            <h2 className="text-white font-semibold">Active Missions</h2>
+        <div className="xl:col-span-2 bg-white border border-gray-200 rounded-xl">
+          <div className="p-4 border-b border-gray-200 flex items-center justify-between gap-4">
+            <h2 className="text-gray-900 font-semibold">Active Missions</h2>
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
               <input
                 type="text"
                 placeholder="Search missions…"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="bg-gray-800 border border-gray-700 rounded-lg pl-9 pr-3 py-1.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-blue-500"
+                className="bg-gray-100 border border-gray-300 rounded-lg pl-9 pr-3 py-1.5 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:border-blue-500"
               />
             </div>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="text-gray-500 border-b border-gray-800">
+                <tr className="text-gray-500 border-b border-gray-200">
                   <th className="text-left px-4 py-3 font-medium">ID</th>
                   <th className="text-left px-4 py-3 font-medium">Name</th>
                   <th className="text-left px-4 py-3 font-medium">Type</th>
@@ -263,10 +263,10 @@ export default function DashboardPage() {
               </thead>
               <tbody>
                 {filteredMissions.map((mission) => (
-                  <tr key={mission.id} className="border-b border-gray-800/50 hover:bg-gray-800/40 transition-colors">
-                    <td className="px-4 py-3 text-gray-400 font-mono text-xs">{mission.id}</td>
-                    <td className="px-4 py-3 text-white font-medium">{mission.name}</td>
-                    <td className="px-4 py-3 text-gray-400">{mission.type}</td>
+                  <tr key={mission.id} className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                    <td className="px-4 py-3 text-gray-500 font-mono text-xs">{mission.id}</td>
+                    <td className="px-4 py-3 text-gray-900 font-medium">{mission.name}</td>
+                    <td className="px-4 py-3 text-gray-500">{mission.type}</td>
                     <td className="px-4 py-3">
                       <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${statusColor(mission.status)}`}>
                         {mission.status}
@@ -274,17 +274,17 @@ export default function DashboardPage() {
                     </td>
                     <td className="px-4 py-3">
                       <div className="flex items-center gap-2">
-                        <div className="w-20 bg-gray-800 rounded-full h-1.5">
+                        <div className="w-20 bg-gray-200 rounded-full h-1.5">
                           <div
                             className={`h-1.5 rounded-full ${healthColor(mission.health)}`}
                             style={{ width: `${mission.health}%` }}
                           />
                         </div>
-                        <span className="text-gray-400 text-xs">{mission.health}%</span>
+                        <span className="text-gray-500 text-xs">{mission.health}%</span>
                       </div>
                     </td>
-                    <td className="px-4 py-3 text-gray-400">
-                      {mission.crew > 0 ? mission.crew : <span className="text-gray-600">—</span>}
+                    <td className="px-4 py-3 text-gray-500">
+                      {mission.crew > 0 ? mission.crew : <span className="text-gray-300">—</span>}
                     </td>
                   </tr>
                 ))}
@@ -301,33 +301,33 @@ export default function DashboardPage() {
         </div>
 
         {/* Telemetry Panel */}
-        <div className="bg-gray-900 border border-gray-800 rounded-xl">
-          <div className="p-4 border-b border-gray-800">
-            <h2 className="text-white font-semibold flex items-center gap-2">
-              <Zap className="w-4 h-4 text-yellow-400" />
+        <div className="bg-white border border-gray-200 rounded-xl">
+          <div className="p-4 border-b border-gray-200">
+            <h2 className="text-gray-900 font-semibold flex items-center gap-2">
+              <Zap className="w-4 h-4 text-yellow-500" />
               Live Telemetry
             </h2>
           </div>
           <div className="p-4 space-y-3">
             {telemetry.map((item, idx) => (
-              <div key={idx} className="bg-gray-800/50 border border-gray-800 rounded-lg p-3">
+              <div key={idx} className="bg-gray-50 border border-gray-200 rounded-lg p-3">
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-gray-400 text-xs">{item.mission}</span>
+                  <span className="text-gray-500 text-xs">{item.mission}</span>
                   <span
                     className={`text-xs ${
                       item.trend === 'up'
-                        ? 'text-yellow-400'
+                        ? 'text-yellow-600'
                         : item.trend === 'down'
-                        ? 'text-red-400'
-                        : 'text-green-400'
+                        ? 'text-red-600'
+                        : 'text-green-600'
                     }`}
                   >
                     {item.trend === 'up' ? '▲' : item.trend === 'down' ? '▼' : '●'}
                   </span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-white text-sm font-medium">{item.metric}</span>
-                  <span className="text-white font-mono text-sm">{item.value}</span>
+                  <span className="text-gray-900 text-sm font-medium">{item.metric}</span>
+                  <span className="text-gray-900 font-mono text-sm">{item.value}</span>
                 </div>
               </div>
             ))}
@@ -338,40 +338,40 @@ export default function DashboardPage() {
       {/* Recent Events + Ground Stations */}
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
         {/* Recent Events */}
-        <div className="xl:col-span-2 bg-gray-900 border border-gray-800 rounded-xl">
-          <div className="p-4 border-b border-gray-800 flex items-center gap-2">
-            <Activity className="w-4 h-4 text-blue-400" />
-            <h2 className="text-white font-semibold">Recent Events</h2>
+        <div className="xl:col-span-2 bg-white border border-gray-200 rounded-xl">
+          <div className="p-4 border-b border-gray-200 flex items-center gap-2">
+            <Activity className="w-4 h-4 text-blue-600" />
+            <h2 className="text-gray-900 font-semibold">Recent Events</h2>
           </div>
-          <div className="divide-y divide-gray-800">
+          <div className="divide-y divide-gray-100">
             {recentEvents.map((event) => {
               const { color, bg, Icon } = severityConfig(event.severity);
               return (
-                <div key={event.id} className="flex gap-4 px-4 py-3 hover:bg-gray-800/40 transition-colors">
+                <div key={event.id} className="flex gap-4 px-4 py-3 hover:bg-gray-50 transition-colors">
                   <div className="mt-0.5 flex-shrink-0">
-                    <div className={`w-7 h-7 rounded-full flex items-center justify-center ${bg}/20`}>
+                    <div className={`w-7 h-7 rounded-full flex items-center justify-center ${bg}`}>
                       <Icon className={`w-4 h-4 ${color}`} />
                     </div>
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-0.5">
-                      <span className="text-white text-sm font-medium">{event.mission}</span>
+                      <span className="text-gray-900 text-sm font-medium">{event.mission}</span>
                       <span
                         className={`text-xs px-1.5 py-0.5 rounded-full font-medium ${
                           event.severity === 'critical'
-                            ? 'text-red-400 bg-red-400/10'
+                            ? 'text-red-700 bg-red-100'
                             : event.severity === 'warning'
-                            ? 'text-yellow-400 bg-yellow-400/10'
-                            : 'text-blue-400 bg-blue-400/10'
+                            ? 'text-yellow-700 bg-yellow-100'
+                            : 'text-blue-700 bg-blue-100'
                         }`}
                       >
                         {event.severity}
                       </span>
                     </div>
-                    <p className="text-gray-400 text-sm leading-snug">{event.description}</p>
+                    <p className="text-gray-600 text-sm leading-snug">{event.description}</p>
                     <div className="flex items-center gap-1 mt-1">
-                      <Clock className="w-3 h-3 text-gray-600" />
-                      <span className="text-gray-600 text-xs">{event.timestamp}</span>
+                      <Clock className="w-3 h-3 text-gray-400" />
+                      <span className="text-gray-400 text-xs">{event.timestamp}</span>
                     </div>
                   </div>
                 </div>
@@ -381,21 +381,21 @@ export default function DashboardPage() {
         </div>
 
         {/* Ground Stations */}
-        <div className="bg-gray-900 border border-gray-800 rounded-xl">
-          <div className="p-4 border-b border-gray-800 flex items-center gap-2">
-            <Radio className="w-4 h-4 text-green-400" />
-            <h2 className="text-white font-semibold">Ground Stations</h2>
+        <div className="bg-white border border-gray-200 rounded-xl">
+          <div className="p-4 border-b border-gray-200 flex items-center gap-2">
+            <Radio className="w-4 h-4 text-green-600" />
+            <h2 className="text-gray-900 font-semibold">Ground Stations</h2>
           </div>
           <div className="p-4 space-y-3">
             {groundStations.map((station) => (
-              <div key={station.id} className="bg-gray-800/50 border border-gray-800 rounded-lg p-3">
+              <div key={station.id} className="bg-gray-50 border border-gray-200 rounded-lg p-3">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-white font-medium text-sm">{station.name}</span>
+                  <span className="text-gray-900 font-medium text-sm">{station.name}</span>
                   <span
                     className={`text-xs px-2 py-0.5 rounded-full font-medium ${
                       station.online
-                        ? 'text-green-400 bg-green-400/10'
-                        : 'text-gray-500 bg-gray-700/50'
+                        ? 'text-green-700 bg-green-100'
+                        : 'text-gray-400 bg-gray-100'
                     }`}
                   >
                     {station.online ? 'Online' : 'Offline'}
@@ -403,21 +403,21 @@ export default function DashboardPage() {
                 </div>
                 <div className="flex items-center gap-1 mb-2">
                   <MapPin className="w-3 h-3 text-gray-500" />
-                  <span className="text-gray-400 text-xs">{station.location}</span>
+                  <span className="text-gray-500 text-xs">{station.location}</span>
                 </div>
                 <div className="mb-2">
                   <span className="text-gray-500 text-xs">Contact: </span>
-                  <span className="text-gray-300 text-xs">{station.contact}</span>
+                  <span className="text-gray-700 text-xs">{station.contact}</span>
                 </div>
                 <div>
                   <div className="flex items-center justify-between mb-1">
                     <span className="text-gray-500 text-xs">Signal Quality</span>
-                    <span className="text-gray-400 text-xs">{station.online ? `${station.signalQuality}%` : '—'}</span>
+                    <span className="text-gray-500 text-xs">{station.online ? `${station.signalQuality}%` : '—'}</span>
                   </div>
-                  <div className="w-full bg-gray-700 rounded-full h-1.5">
+                  <div className="w-full bg-gray-200 rounded-full h-1.5">
                     <div
                       className={`h-1.5 rounded-full transition-all ${
-                        station.online ? signalColor(station.signalQuality) : 'bg-gray-600'
+                        station.online ? signalColor(station.signalQuality) : 'bg-gray-300'
                       }`}
                       style={{ width: station.online ? `${station.signalQuality}%` : '0%' }}
                     />
@@ -430,15 +430,15 @@ export default function DashboardPage() {
       </div>
 
       {/* Upcoming Schedule */}
-      <div className="bg-gray-900 border border-gray-800 rounded-xl">
-        <div className="p-4 border-b border-gray-800 flex items-center gap-2">
-          <Calendar className="w-4 h-4 text-purple-400" />
-          <h2 className="text-white font-semibold">Upcoming Schedule</h2>
+      <div className="bg-white border border-gray-200 rounded-xl">
+        <div className="p-4 border-b border-gray-200 flex items-center gap-2">
+          <Calendar className="w-4 h-4 text-purple-600" />
+          <h2 className="text-gray-900 font-semibold">Upcoming Schedule</h2>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="text-gray-500 border-b border-gray-800">
+              <tr className="text-gray-500 border-b border-gray-200">
                 <th className="text-left px-4 py-3 font-medium">Scheduled Time</th>
                 <th className="text-left px-4 py-3 font-medium">Mission</th>
                 <th className="text-left px-4 py-3 font-medium">Event Type</th>
@@ -447,17 +447,17 @@ export default function DashboardPage() {
             </thead>
             <tbody>
               {upcomingSchedule.map((row) => (
-                <tr key={row.id} className="border-b border-gray-800/50 hover:bg-gray-800/40 transition-colors">
+                <tr key={row.id} className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
                   <td className="px-4 py-3">
                     <div className="flex items-center gap-1.5">
                       <Clock className="w-3.5 h-3.5 text-gray-500" />
-                      <span className="text-gray-300 font-mono text-xs">{row.scheduledTime}</span>
+                      <span className="text-gray-600 font-mono text-xs">{row.scheduledTime}</span>
                     </div>
                   </td>
-                  <td className="px-4 py-3 text-white font-medium">{row.mission}</td>
-                  <td className="px-4 py-3 text-gray-400">{row.eventType}</td>
+                  <td className="px-4 py-3 text-gray-900 font-medium">{row.mission}</td>
+                  <td className="px-4 py-3 text-gray-500">{row.eventType}</td>
                   <td className="px-4 py-3">
-                    <span className="text-purple-400 font-mono text-xs bg-purple-400/10 px-2 py-0.5 rounded-full">
+                    <span className="text-purple-700 font-mono text-xs bg-purple-100 px-2 py-0.5 rounded-full">
                       {row.duration}
                     </span>
                   </td>
