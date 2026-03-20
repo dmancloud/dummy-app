@@ -24,7 +24,7 @@ export default function RootLayout({
         {/* ShipFeat Widget */}
         <Script
           src="https://dev.shipfeat.ai/widget.js"
-          data-key="cmmsef17j0002ayndi877da63"
+          data-key="cmmy4nf920008plndn07k3oax"
           data-api="https://dev.shipfeat.ai"
           strategy="lazyOnload"
         />
