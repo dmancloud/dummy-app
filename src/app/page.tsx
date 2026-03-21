@@ -209,8 +209,8 @@ export default function DashboardPage() {
     <div className="min-h-screen bg-gray-50 text-gray-900 p-6 space-y-8">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">Mission Control</h1>
-        <p className="text-gray-500 text-sm mt-1">Real-time overview of all active missions and systems</p>
+        <h1 className="text-2xl font-bold text-gray-900">LaunchPad</h1>
+        <p className="text-gray-500 text-sm mt-1">476 Days To Mission Launch</p>
       </div>
 
       {/* Stats Cards */}
