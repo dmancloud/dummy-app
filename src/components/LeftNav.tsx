@@ -4,11 +4,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const navItems = [
-  { href: "/", label: "Home", icon: "🏠" },
-  { href: "/dashboard", label: "Dashboard", icon: "📊" },
-  { href: "/users", label: "Users", icon: "👥" },
+  { href: "/", label: "Overview", icon: "🏠" },
+  { href: "/dashboard", label: "Admin Dashboard", icon: "🛡️" },
+  { href: "/users", label: "User Directory", icon: "👥" },
   { href: "/projects", label: "Projects", icon: "📁" },
-  { href: "/settings", label: "Settings", icon: "⚙️" },
+  { href: "/settings", label: "Admin Settings", icon: "⚙️" },
 ];
 
 export default function LeftNav() {
