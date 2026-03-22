@@ -20,7 +20,7 @@ const stats = [
   { label: 'Active Missions', value: '14', icon: Satellite, change: '+2 this month', up: true },
   { label: 'Ground Stations', value: '4', icon: Radio, change: 'All online', up: true },
   { label: 'Active Alerts', value: '3', icon: AlertTriangle, change: '-1 from yesterday', up: false },
-  { label: 'Mission Success Rate', value: '94.2%', icon: TrendingUp, change: '+0.8% this quarter', up: true },
+  { label: 'Mission Success Rate', value: '98.9%', icon: TrendingUp, change: '+0.8% this quarter', up: true },
 ];
 
 const missions = [
