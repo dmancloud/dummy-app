@@ -5,8 +5,8 @@ import TopNav from "@/components/TopNav";
 import LeftNav from "@/components/LeftNav";
 
 export const metadata: Metadata = {
-  title: "Dinesh Rocks!",
-  description: "A dummy Next.js app with top and left navigation",
+  title: "Admin Control Center",
+  description: "An admin dashboard for monitoring users, access, audit activity, and platform analytics.",
 };
 
 export default function RootLayout({
@@ -21,7 +21,6 @@ export default function RootLayout({
         <LeftNav />
         <main className="ml-56 mt-16 p-8">{children}</main>
 
-        {/* ShipFeat Widget */}
         <Script
           src="https://dev.shipfeat.ai/widget.js"
           data-key="cmmy4nf920008plndn07k3oax"
