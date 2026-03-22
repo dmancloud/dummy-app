@@ -210,7 +210,7 @@ export default function DashboardPage() {
       {/* Header */}
       <div>
         <h1 className="text-2xl font-bold text-gray-900">Mission Control</h1>
-        <p className="text-gray-500 text-sm mt-1">Real-time overview of all active missions and systems</p>
+        <p className="text-gray-500 text-sm mt-1">365 Days Till Launch!</p>
       </div>
 
       {/* Stats Cards */}
