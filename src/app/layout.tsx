@@ -5,7 +5,7 @@ import TopNav from "@/components/TopNav";
 import LeftNav from "@/components/LeftNav";
 
 export const metadata: Metadata = {
-  title: "Dummy App",
+  title: "Dinesh Rocks!",
   description: "A dummy Next.js app with top and left navigation",
 };
 
