@@ -13,8 +13,8 @@ import {
   Info,
   Zap,
   TrendingUp,
-  Search,
 } from 'lucide-react';
+import MissionFilters from '@/components/MissionFilters';
 
 const stats = [
   { label: 'Active Missions', value: '14', icon: Satellite, change: '+2 this month', up: true },
@@ -197,23 +197,22 @@ function signalColor(quality: number) {
 
 export default function DashboardPage() {
   const [search, setSearch] = useState('');
+  const [status, setStatus] = useState('All');
 
-  const filteredMissions = missions.filter(
-    (m) =>
-      m.name.toLowerCase().includes(search.toLowerCase()) ||
-      m.id.toLowerCase().includes(search.toLowerCase()) ||
-      m.type.toLowerCase().includes(search.toLowerCase())
-  );
+  const filteredMissions = missions.filter((mission) => {
+    const matchesSearch = mission.name.toLowerCase().includes(search.toLowerCase());
+    const matchesStatus = status === 'All' || mission.status === status;
+
+    return matchesSearch && matchesStatus;
+  });
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900 p-6 space-y-8">
-      {/* Header */}
       <div>
         <h1 className="text-2xl font-bold text-gray-900">Mission Control</h1>
         <p className="text-gray-500 text-sm mt-1">365 Days Till Launch!</p>
       </div>
 
-      {/* Stats Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {stats.map((stat) => {
           const Icon = stat.icon;
@@ -232,23 +231,17 @@ export default function DashboardPage() {
         })}
       </div>
 
-      {/* Missions Table + Telemetry */}
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
-        {/* Missions Table */}
         <div className="xl:col-span-2 bg-white border border-gray-200 rounded-xl">
-          <div className="p-4 border-b border-gray-200 flex items-center justify-between gap-4">
+          <div className="p-4 border-b border-gray-200">
             <h2 className="text-gray-900 font-semibold">Active Missions</h2>
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-              <input
-                type="text"
-                placeholder="Search missions…"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                className="bg-gray-100 border border-gray-300 rounded-lg pl-9 pr-3 py-1.5 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:border-blue-500"
-              />
-            </div>
           </div>
+          <MissionFilters
+            searchValue={search}
+            selectedStatus={status}
+            onSearchChange={setSearch}
+            onStatusChange={setStatus}
+          />
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
@@ -291,7 +284,7 @@ export default function DashboardPage() {
                 {filteredMissions.length === 0 && (
                   <tr>
                     <td colSpan={6} className="px-4 py-8 text-center text-gray-500">
-                      No missions match your search.
+                      No missions found
                     </td>
                   </tr>
                 )}
@@ -300,7 +293,6 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        {/* Telemetry Panel */}
         <div className="bg-white border border-gray-200 rounded-xl">
           <div className="p-4 border-b border-gray-200">
             <h2 className="text-gray-900 font-semibold flex items-center gap-2">
@@ -335,9 +327,7 @@ export default function DashboardPage() {
         </div>
       </div>
 
-      {/* Recent Events + Ground Stations */}
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
-        {/* Recent Events */}
         <div className="xl:col-span-2 bg-white border border-gray-200 rounded-xl">
           <div className="p-4 border-b border-gray-200 flex items-center gap-2">
             <Activity className="w-4 h-4 text-blue-600" />
@@ -380,7 +370,6 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        {/* Ground Stations */}
         <div className="bg-white border border-gray-200 rounded-xl">
           <div className="p-4 border-b border-gray-200 flex items-center gap-2">
             <Radio className="w-4 h-4 text-green-600" />
@@ -429,7 +418,6 @@ export default function DashboardPage() {
         </div>
       </div>
 
-      {/* Upcoming Schedule */}
       <div className="bg-white border border-gray-200 rounded-xl">
         <div className="p-4 border-b border-gray-200 flex items-center gap-2">
           <Calendar className="w-4 h-4 text-purple-600" />
