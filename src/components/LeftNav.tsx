@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 const navItems = [
   { href: "/", label: "Overview", icon: "🏠" },
   { href: "/dashboard", label: "Admin Dashboard", icon: "🛡️" },
+  { href: "/analytics", label: "Analytics", icon: "📊" },
   { href: "/users", label: "User Directory", icon: "👥" },
   { href: "/projects", label: "Projects", icon: "📁" },
   { href: "/integrations", label: "Integrations", icon: "🔌" },
@@ -25,6 +26,7 @@ export default function LeftNav() {
             <Link
               key={item.href}
               href={item.href}
+              aria-label={item.label}
               className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors ${
                 isActive
                   ? "bg-blue-100 text-blue-700 font-medium"
