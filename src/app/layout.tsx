@@ -19,7 +19,12 @@ export default function RootLayout({
       <body className="antialiased">
         <TopNav />
         <LeftNav />
-        <main className="ml-56 mt-16 p-8">{children}</main>
+        <main
+          className="ml-56 p-8"
+          style={{ marginTop: "calc(var(--sf-banner-height, 0px) + 4rem)" }}
+        >
+          {children}
+        </main>
 
         <Script
           src="https://dev.shipfeat.ai/widget.js"

@@ -18,7 +18,13 @@ export default function LeftNav() {
   const pathname = usePathname();
 
   return (
-    <aside className="fixed top-16 left-0 w-56 h-[calc(100vh-4rem)] bg-gray-50 border-r border-gray-200 p-4 overflow-y-auto">
+    <aside
+      className="fixed left-0 w-56 bg-gray-50 border-r border-gray-200 p-4 overflow-y-auto"
+      style={{
+        top: "calc(var(--sf-banner-height, 0px) + 4rem)",
+        height: "calc(100vh - var(--sf-banner-height, 0px) - 4rem)",
+      }}
+    >
       <nav className="flex flex-col gap-1">
         {navItems.map((item) => {
           const isActive = pathname === item.href;
