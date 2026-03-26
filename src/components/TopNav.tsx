@@ -4,7 +4,10 @@ import Link from "next/link";
 
 export default function TopNav() {
   return (
-    <header className="fixed top-0 left-0 right-0 h-16 bg-gray-900 text-white flex items-center justify-between px-6 z-50 shadow-md">
+    <header
+      className="fixed left-0 right-0 h-16 bg-gray-900 text-white flex items-center justify-between px-6 z-50 shadow-md"
+      style={{ top: "var(--sf-banner-height, 0px)" }}
+    >
       <Link href="/" className="text-xl font-bold tracking-tight">
         Admin Control Center
       </Link>
